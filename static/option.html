@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+  function validate(){
+      var top = document.getElementsByName("top")[0];
+      var bot = document.getElementsByName("bottom")[0];
+      var bad = "<script>";
+      if(top.value.includes(bad) || bot.value.includes(bad))
+      {
+          alert('No XSS please!');
+          top.value = '';
+          bot.value = '';
+          return false;
+      }
+      else
+      {
+          return true;
+      }
+  }
+  </script>
+
+</head>
+<form id="upload" enctype="multipart/form-data" action="" onsubmit="return validate()" method="post">
+    <select name="image" required>
+      <option value="">Select a template...</option>
+      <option value="ucla.jpg">1</option>
+      <option value="powell.jpg">2</option>
+    </select><br>
+    <input type="text" name="top" placeholder="Top text..." required><br>
+    <input type="text" name="bottom" placeholder="Bottom text..." required><br>
+    <input type="submit" value="Create">
+</form>
+</html>>

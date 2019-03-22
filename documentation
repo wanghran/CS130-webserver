@@ -1,0 +1,24 @@
+This is a description of our server.
+
+Unit Test
+So far, we have added a lot of unit tests and they almost cover every method call of each class.
+Please check XXXX_test.cc for detail, eg. Dataprocessor_test.cc.
+
+MIME Types
+The server is able to handle .zip, .txt, .jpg/jpeg, .html/htm files. 
+See getFileType method of staticHandler.cc for detailed impletation.
+
+Integration Test
+The integration test starts the server and tries to access the echo path. Then it compares
+the reponse with either valid or invalid reponse to determine whether the server is working correctly.
+See integration.sh for detailed implementation.
+
+Log
+Our log records the following information:
+timestamp
+threadid
+severity
+ip
+message
+
+Please refer to logger.cc for detailed implementation.

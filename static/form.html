@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validate(){
+    var file = document.getElementById('image');
+    var path = file.value;
+    var valid_file = /(\.jpeg|\.png|\.gif|\.bmp|\.jpg)$/i;
+    var top = document.getElementsByName("top")[0];
+    var bot = document.getElementsByName("bottom")[0];
+    var bad = "<script>";
+    if(!valid_file.exec(path))
+    {
+        alert('Not a image!!!');
+        file.value = '';
+        return false;
+    }
+    else if(top.value.includes(bad) || bot.value.includes(bad))
+    {
+        alert('No XSS please!');
+        top.value = '';
+        bot.value = '';
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+</script>
+</head>
+<body>
+
+<form id="upload" enctype="multipart/form-data" action="" onsubmit="return validate()" method="post">
+    <input id="image" name="myimage" type="file" required/><br>
+    <input type="text" name="top" placeholder="Top text..." required><br>
+    <input type="text" name="bottom" placeholder="Bottom text..." required><br>
+    <input type="submit" value="Create" id="submit">
+</form>
+
+</body>
+</html>

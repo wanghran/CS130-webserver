@@ -1,0 +1,46 @@
+listen   2019;
+
+root      /usr/src/projects/hungrynerds-assignment-2;
+
+handler static {
+  location      /static1;
+  root        /static;
+}
+
+handler static {
+  location      /static2;
+  root        /another_static;
+}
+
+handler echo {
+  location      /echo;
+}
+
+handler status {
+  location      /status;
+}
+
+handler proxy {
+  location	/ucla;
+  root		www.ucla.edu;
+  proxyport	80;
+}
+
+# The following shouldn't work
+handler proxy {
+  location	/another;
+  root		www.ucla.edu;
+  proxyport	1337;
+}
+
+# Neither should this
+handler proxy {
+  location	/ucla2;
+  root		www.ucla.edu;
+  proxyport	6554;
+}
+
+handler form {
+  location    /mime/view;
+  list    /mime/list;
+}

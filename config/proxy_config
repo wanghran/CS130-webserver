@@ -1,0 +1,8 @@
+listen   80;
+
+root      /usr/src/project;
+
+handler proxy {
+  location	/proxy;
+  root		/ucla.edu;
+}
